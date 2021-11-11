@@ -19,16 +19,16 @@ struct QuizBrain{
                 Question(q: "12 x 12 = 144", a: "True")]
     
     
-    func getScore()-> Int{
-        return score
-    }
-    
     func getQuestion() ->  String {
         return quiz[questionNumber].question
     }
     
     func getProgress()-> Float{
         return Float(questionNumber)/Float(quiz.count)
+    }
+    
+    mutating func getScore()-> Int{
+        return score
     }
     
     mutating func nextQuestion(){
@@ -38,6 +38,7 @@ struct QuizBrain{
             questionNumber = 0
         }
     }
+    
     mutating func checkAnswer(userAnsewer: String) -> Bool{
         if userAnsewer == quiz[questionNumber].answer {
             score += 1

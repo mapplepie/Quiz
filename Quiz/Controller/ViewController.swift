@@ -15,21 +15,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var progressBar: UIProgressView!
     
     var quizBrain = QuizBrain()
+//    var a = A()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        updateUI()
     }
 
     @IBAction func answerPressed(_ sender: UIButton) {
-        let userAnswer = sender.currentTitle!
-        
-        let userGotItRight = quizBrain.checkAnswer(userAnsewer: userAnswer)
-        
-        if userGotItRight {
-            sender.backgroundColor = .green
-        }else{
-            sender.backgroundColor = .red
+
+        let aa: String? = sender.currentTitle
+        print(sender.currentTitle)
+        if let userAnswer = aa{
+            print(userAnswer)
+             let userGotItRight = quizBrain.checkAnswer(userAnsewer: userAnswer)
+            
+                if userGotItRight {
+                sender.backgroundColor = .green
+                }else{
+                sender.backgroundColor = .red
+                }
         }
         
         quizBrain.nextQuestion()
